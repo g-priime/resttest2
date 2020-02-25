@@ -48,14 +48,14 @@ public class AccountService {
         return false;
     }
 
-    public boolean changePassword(String username, String password) {
+    public String changePassword(String username, String password) {
         UserDB udb = new UserDB();
 
         if (udb.changePassword(username, password) > 0) {
-            return true;
+            return JWT.createJWT("testid", username, "accountService", 0);
         }
         
-        return false;
+        return null;
     }
 
 }
